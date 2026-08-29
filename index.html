@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Flipkart Order Confirmation</title>
+    <title>Rider Store - Order Confirmation</title>
 
     <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
@@ -15,7 +15,6 @@
     <style>
       :root {
         --blue: #2874f0;
-        --dark-blue: #0f4bbd;
         --green: #198754;
         --light-green: #eaf8ef;
         --text: #172033;
@@ -36,116 +35,86 @@
       }
 
       /* =====================================================
-       FLIPKART STYLE HEADER
-    ===================================================== */
+         CUSTOMER HEADER
+      ===================================================== */
 
-      .fk-header {
-        background: #2874f0;
-        height: 56px;
-        display: flex;
-        align-items: center;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-        position: sticky;
-        top: 0;
-        z-index: 1000;
+      .customer-header {
+        background: #ffffff;
+        border-bottom: 1px solid var(--border);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+        padding: 16px 20px;
       }
 
-      .fk-header-inner {
-        width: 100%;
-        max-width: 1250px;
+      .customer-header-inner {
+        max-width: 900px;
         margin: auto;
-        padding: 0 15px;
         display: flex;
         align-items: center;
-        gap: 25px;
+        justify-content: space-between;
+        gap: 15px;
       }
 
-      .fk-logo {
+      .brand-area {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      /* Store Logo */
+      .brand-icon {
+        width: 44px;
+        height: 44px;
+        border-radius: 10px;
+        background: #2874f0;
         color: #fff;
-        text-decoration: none;
-        font-size: 23px;
-        font-weight: 800;
-        font-style: italic;
-        line-height: 1;
-        white-space: nowrap;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 21px;
+        box-shadow: 0 3px 8px rgba(40, 116, 240, 0.25);
       }
 
-      .fk-logo span {
-        display: block;
-        font-size: 10px;
-        font-style: italic;
-        font-weight: 500;
-        margin-top: 2px;
-        color: #ffe500;
-        text-align: center;
+      .brand-icon i {
+        font-size: 22px;
       }
 
-      .fk-search {
-        flex: 1;
-        max-width: 600px;
-        position: relative;
-      }
-
-      .fk-search input {
-        width: 100%;
-        height: 38px;
-        border: none;
-        outline: none;
-        padding: 0 45px 0 15px;
-        border-radius: 2px;
-        font-size: 14px;
-      }
-
-      .fk-search button {
-        position: absolute;
-        right: 0;
-        top: 0;
-        height: 38px;
-        width: 45px;
-        border: none;
-        background: #fff;
-        color: #2874f0;
+      .brand-name {
         font-size: 18px;
-      }
-
-      .fk-login {
-        background: #fff;
-        color: #2874f0;
-        border: none;
-        height: 34px;
-        min-width: 105px;
-        font-size: 14px;
         font-weight: 700;
-        border-radius: 2px;
+        color: #172033;
+        line-height: 1.2;
       }
 
-      .fk-header-link {
-        color: #fff;
-        text-decoration: none;
-        font-size: 14px;
-        font-weight: 600;
+      .brand-subtitle {
+        font-size: 12px;
+        color: var(--muted);
+        margin-top: 3px;
+      }
+
+      .header-status {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        color: var(--green);
+        font-size: 13px;
+        font-weight: 700;
+        background: #eaf8ef;
+        padding: 8px 12px;
+        border-radius: 20px;
         white-space: nowrap;
       }
 
-      .fk-cart {
-        color: #fff;
-        text-decoration: none;
-        font-weight: 600;
-        white-space: nowrap;
-      }
-
-      .fk-cart i {
-        font-size: 19px;
-        margin-right: 5px;
+      .header-status i {
+        font-size: 15px;
       }
 
       /* =====================================================
-       MAIN
-    ===================================================== */
+         MAIN
+      ===================================================== */
 
       .order-page {
         max-width: 900px;
-        margin: 35px auto;
+        margin: 30px auto;
       }
 
       .order-card {
@@ -157,8 +126,8 @@
       }
 
       /* =====================================================
-       CONFIRMATION HEADER
-    ===================================================== */
+         CONFIRMATION
+      ===================================================== */
 
       .confirmation-header {
         padding: 28px 30px;
@@ -190,8 +159,8 @@
       }
 
       /* =====================================================
-       VERIFIED
-    ===================================================== */
+         VERIFIED
+      ===================================================== */
 
       .secure-box {
         display: flex;
@@ -224,8 +193,8 @@
       }
 
       /* =====================================================
-       SECTION
-    ===================================================== */
+         SECTION
+      ===================================================== */
 
       .content-section {
         margin: 20px 30px;
@@ -246,8 +215,8 @@
       }
 
       /* =====================================================
-       ORDER INFO
-    ===================================================== */
+         ORDER INFO
+      ===================================================== */
 
       .order-id-label {
         color: var(--muted);
@@ -268,6 +237,10 @@
         cursor: pointer;
       }
 
+      .copy-btn:hover {
+        color: var(--blue);
+      }
+
       .date-info {
         color: var(--muted);
         font-size: 14px;
@@ -279,8 +252,8 @@
       }
 
       /* =====================================================
-       PAYMENT
-    ===================================================== */
+         PAYMENT
+      ===================================================== */
 
       .paid-badge {
         display: inline-block;
@@ -305,8 +278,8 @@
       }
 
       /* =====================================================
-       CUSTOMER
-    ===================================================== */
+         CUSTOMER
+      ===================================================== */
 
       .customer-name {
         font-size: 18px;
@@ -330,8 +303,8 @@
       }
 
       /* =====================================================
-       ADDRESS
-    ===================================================== */
+         ADDRESS
+      ===================================================== */
 
       .address-text {
         font-size: 14px;
@@ -354,8 +327,8 @@
       }
 
       /* =====================================================
-       PRODUCT
-    ===================================================== */
+         PRODUCT
+      ===================================================== */
 
       .product-item {
         display: flex;
@@ -420,8 +393,8 @@
       }
 
       /* =====================================================
-       SUMMARY
-    ===================================================== */
+         SUMMARY
+      ===================================================== */
 
       .summary-row {
         display: flex;
@@ -447,8 +420,8 @@
       }
 
       /* =====================================================
-       PAID ONLINE
-    ===================================================== */
+         PAID ONLINE
+      ===================================================== */
 
       .paid-online {
         margin-top: 20px;
@@ -490,8 +463,8 @@
       }
 
       /* =====================================================
-       SELLER
-    ===================================================== */
+         SELLER
+      ===================================================== */
 
       .seller-logo {
         width: 85px;
@@ -536,8 +509,8 @@
       }
 
       /* =====================================================
-       VERIFIED FOOTER
-    ===================================================== */
+         VERIFIED FOOTER
+      ===================================================== */
 
       .verified-box {
         margin: 20px 30px 25px;
@@ -578,8 +551,8 @@
       }
 
       /* =====================================================
-       THANK YOU
-    ===================================================== */
+         THANK YOU
+      ===================================================== */
 
       .thank-you {
         text-align: center;
@@ -589,43 +562,39 @@
       }
 
       /* =====================================================
-       MOBILE
-    ===================================================== */
+         MOBILE
+      ===================================================== */
 
       @media (max-width: 767px) {
-        .fk-header {
-          height: auto;
-          min-height: 58px;
-          padding: 8px 0;
+        .customer-header {
+          padding: 12px 15px;
         }
 
-        .fk-header-inner {
-          flex-wrap: wrap;
-          gap: 8px;
+        .customer-header-inner {
+          gap: 10px;
         }
 
-        .fk-logo {
-          font-size: 20px;
+        .brand-icon {
+          width: 38px;
+          height: 38px;
+          border-radius: 9px;
         }
 
-        .fk-logo span {
-          font-size: 8px;
+        .brand-icon i {
+          font-size: 18px;
         }
 
-        .fk-search {
-          order: 3;
-          flex-basis: 100%;
-          max-width: 100%;
+        .brand-name {
+          font-size: 16px;
         }
 
-        .fk-login,
-        .fk-header-link {
-          display: none;
+        .brand-subtitle {
+          font-size: 10px;
         }
 
-        .fk-cart {
-          margin-left: auto;
-          font-size: 13px;
+        .header-status {
+          font-size: 11px;
+          padding: 7px 9px;
         }
 
         .order-page {
@@ -710,52 +679,80 @@
           width: 100%;
         }
       }
+
+      /* =====================================================
+         VERY SMALL MOBILE
+      ===================================================== */
+
+      @media (max-width: 480px) {
+        .customer-header-inner {
+          align-items: center;
+        }
+
+        .header-status {
+          font-size: 10px;
+          padding: 6px 8px;
+        }
+
+        .header-status i {
+          font-size: 12px;
+        }
+
+        .brand-name {
+          font-size: 15px;
+        }
+
+        .brand-subtitle {
+          font-size: 9px;
+        }
+
+        .order-id {
+          font-size: 22px;
+        }
+
+        .product-price {
+          font-size: 14px;
+        }
+      }
     </style>
   </head>
 
   <body>
     <!-- =====================================================
-       FLIPKART HEADER
-  ====================================================== -->
+         CUSTOMER HEADER
+    ====================================================== -->
 
-    <header class="fk-header">
-      <div class="fk-header-inner">
-        <a href="#" class="fk-logo">
-          Flipkart
-          <span>Explore Plus ✦</span>
-        </a>
+    <header class="customer-header">
+      <div class="customer-header-inner">
+        <div class="brand-area">
+          <!-- Professional Store Logo -->
+          <div class="brand-icon">
+            <i class="bi bi-shop-window"></i>
+          </div>
 
-        <div class="fk-search">
-          <input type="text" placeholder="Search for products, brands and more" />
-
-          <button type="button">
-            <i class="bi bi-search"></i>
-          </button>
+          <div>
+            <div class="brand-name">Rider Store</div>
+            <div class="brand-subtitle">Customer Order Confirmation</div>
+          </div>
         </div>
 
-        <button class="fk-login">Login</button>
-
-        <a href="#" class="fk-header-link"> Become a Seller </a>
-
-        <a href="#" class="fk-header-link"> More <i class="bi bi-chevron-down"></i> </a>
-
-        <a href="#" class="fk-cart">
-          <i class="bi bi-cart3"></i>
-          Cart
-        </a>
+        <div class="header-status">
+          <i class="bi bi-check-circle-fill"></i>
+          Order Confirmed
+        </div>
       </div>
     </header>
 
     <!-- =====================================================
-       PAGE
-  ====================================================== -->
+         PAGE
+    ====================================================== -->
 
     <div class="container-fluid">
       <div class="order-page">
         <div class="order-card">
           <!-- =================================================
-             CONFIRMATION
-        ================================================== -->
+               CONFIRMATION
+          ================================================== -->
 
           <div class="confirmation-header">
             <div class="row align-items-center">
@@ -776,7 +773,7 @@
               <div class="col-md-4">
                 <div class="secure-box justify-content-md-end">
                   <div class="secure-icon">
-                    <i class="bi bi-check-lg"></i>
+                    <i class="bi bi-shield-check"></i>
                   </div>
 
                   <div>
@@ -790,8 +787,8 @@
           </div>
 
           <!-- =================================================
-             ORDER INFORMATION
-        ================================================== -->
+               ORDER INFORMATION
+          ================================================== -->
 
           <div class="content-section">
             <div class="row align-items-center">
@@ -820,6 +817,7 @@
 
                 <div class="payment-success">
                   Payment Successful
+
                   <i class="bi bi-check-circle-fill"></i>
                 </div>
               </div>
@@ -827,8 +825,8 @@
           </div>
 
           <!-- =================================================
-             CUSTOMER + ADDRESS
-        ================================================== -->
+               CUSTOMER + ADDRESS
+          ================================================== -->
 
           <div class="content-section">
             <div class="row">
@@ -881,8 +879,8 @@
           </div>
 
           <!-- =================================================
-             ORDER ITEMS
-        ================================================== -->
+               ORDER ITEMS
+          ================================================== -->
 
           <div class="content-section">
             <div class="section-heading">
@@ -890,8 +888,6 @@
 
               Order Items
             </div>
-
-            <!-- PRODUCT 1 -->
 
             <div class="product-item">
               <div class="product-image">
@@ -915,13 +911,11 @@
 
               <div class="product-price">₹2,198</div>
             </div>
-
-            <!-- PRODUCT 2 -->
           </div>
 
           <!-- =================================================
-             ORDER SUMMARY
-        ================================================== -->
+               ORDER SUMMARY
+          ================================================== -->
 
           <div class="content-section">
             <div class="section-heading">
@@ -966,8 +960,8 @@
           </div>
 
           <!-- =================================================
-             SELLER
-        ================================================== -->
+               SELLER
+          ================================================== -->
 
           <div class="content-section">
             <div class="section-heading">
@@ -981,6 +975,7 @@
                 <div class="d-flex align-items-center gap-3">
                   <div class="seller-logo">
                     RIDER<br />
+
                     STORE
                   </div>
 
@@ -1033,8 +1028,8 @@
           </div>
 
           <!-- =================================================
-             VERIFIED
-        ================================================== -->
+               VERIFIED
+          ================================================== -->
 
           <div class="verified-box">
             <div class="row align-items-center">
@@ -1061,39 +1056,45 @@
           </div>
 
           <!-- =================================================
-             THANK YOU
-        ================================================== -->
+               THANK YOU
+          ================================================== -->
 
           <div class="thank-you">Thank you for shopping with us! 😊</div>
         </div>
       </div>
     </div>
 
-    <!-- Bootstrap JS -->
+    <!-- =====================================================
+         BOOTSTRAP JS
+    ===================================================== -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
       /* =====================================================
-       COPY ORDER ID
-    ===================================================== */
+         COPY ORDER ID
+      ===================================================== */
 
       function copyOrderId() {
         const orderId = "ORD102458";
 
-        navigator.clipboard
-          .writeText(orderId)
-          .then(() => {
-            alert("Order ID copied: " + orderId);
-          })
-          .catch(() => {
-            alert("Order ID: " + orderId);
-          });
+        if (navigator.clipboard) {
+          navigator.clipboard
+            .writeText(orderId)
+            .then(() => {
+              alert("Order ID copied: " + orderId);
+            })
+            .catch(() => {
+              alert("Order ID: " + orderId);
+            });
+        } else {
+          alert("Order ID: " + orderId);
+        }
       }
 
       /* =====================================================
-       GOOGLE MAP
-    ===================================================== */
+         GOOGLE MAP
+      ===================================================== */
 
       function openMap() {
         const address = "22 Green Park Society, Near Lotus Tower, Andheri East, Mumbai 400069";
@@ -1104,8 +1105,8 @@
       }
 
       /* =====================================================
-       CONTACT STORE
-    ===================================================== */
+         CONTACT STORE
+      ===================================================== */
 
       function contactStore() {
         window.location.href = "tel:+919123456789";
