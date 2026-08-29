@@ -1,0 +1,930 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Order Confirmation</title>
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+
+    <style>
+      :root {
+        --blue: #2874f0;
+        --dark-blue: #0f4bbd;
+        --green: #198754;
+        --light-green: #eaf8ef;
+        --text: #172033;
+        --muted: #667085;
+        --border: #e5e9f0;
+        --bg: #f5f7fb;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      /* ================================
+       MAIN CONTAINER
+    ================================= */
+
+      .order-page {
+        max-width: 900px;
+        margin: 35px auto;
+      }
+
+      /* ================================
+       MAIN CARD
+    ================================= */
+
+      .order-card {
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.06);
+        overflow: hidden;
+      }
+
+      /* ================================
+       CONFIRM HEADER
+    ================================= */
+
+      .confirmation-header {
+        padding: 28px 30px;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .confirmed-title {
+        color: var(--green);
+        font-size: 27px;
+        font-weight: 700;
+      }
+
+      .confirmed-icon {
+        width: 42px;
+        height: 42px;
+        background: var(--green);
+        color: white;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 22px;
+      }
+
+      .confirmation-text {
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      /* ================================
+       VERIFIED
+    ================================= */
+
+      .secure-box {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .secure-icon {
+        width: 42px;
+        height: 48px;
+        background: var(--blue);
+        color: white;
+        clip-path: polygon(50% 0%, 90% 15%, 90% 55%, 50% 100%, 10% 55%, 10% 15%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 19px;
+      }
+
+      .secure-title {
+        color: var(--blue);
+        font-weight: 700;
+        font-size: 15px;
+      }
+
+      .secure-subtitle {
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      /* ================================
+       SECTION
+    ================================= */
+
+      .content-section {
+        margin: 20px 30px;
+        border: 1px solid var(--border);
+        border-radius: 13px;
+        padding: 22px;
+      }
+
+      .section-heading {
+        font-size: 17px;
+        font-weight: 700;
+        margin-bottom: 18px;
+      }
+
+      .section-heading i {
+        color: var(--blue);
+        margin-right: 8px;
+      }
+
+      /* ================================
+       ORDER INFO
+    ================================= */
+
+      .order-id-label {
+        color: var(--muted);
+        font-size: 13px;
+        margin-bottom: 5px;
+      }
+
+      .order-id {
+        font-size: 27px;
+        font-weight: 700;
+      }
+
+      .copy-btn {
+        border: none;
+        background: transparent;
+        color: var(--muted);
+        margin-left: 5px;
+      }
+
+      .date-info {
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .date-info i {
+        color: var(--blue);
+        margin-right: 7px;
+      }
+
+      /* ================================
+       PAYMENT
+    ================================= */
+
+      .paid-badge {
+        display: inline-block;
+        background: #dff5e6;
+        color: var(--green);
+        padding: 7px 15px;
+        border-radius: 8px;
+        font-size: 13px;
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+
+      .payment-title {
+        font-size: 15px;
+        margin-bottom: 5px;
+      }
+
+      .payment-success {
+        color: var(--green);
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      .payment-success i {
+        margin-left: 4px;
+      }
+
+      /* ================================
+       CUSTOMER
+    ================================= */
+
+      .customer-name {
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 10px;
+      }
+
+      .detail-row {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        color: #475467;
+        font-size: 14px;
+        margin-bottom: 10px;
+      }
+
+      .detail-row i {
+        color: var(--blue);
+        font-size: 16px;
+        margin-top: 1px;
+      }
+
+      /* ================================
+       ADDRESS
+    ================================= */
+
+      .address-text {
+        font-size: 14px;
+        line-height: 1.7;
+        color: #344054;
+      }
+
+      .map-btn {
+        border: 1px solid #8eb4f7;
+        background: #fff;
+        color: var(--blue);
+        border-radius: 9px;
+        padding: 8px 14px;
+        font-size: 13px;
+        font-weight: 600;
+      }
+
+      .map-btn:hover {
+        background: #f1f6ff;
+      }
+
+      /* ================================
+       PRODUCTS
+    ================================= */
+
+      .product-item {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        padding: 15px 0;
+        border-bottom: 1px solid #edf0f4;
+      }
+
+      .product-item:last-child {
+        border-bottom: none;
+      }
+
+      .product-image {
+        width: 120px;
+        height: 110px;
+        border: 1px solid var(--border);
+        border-radius: 9px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        background: #fff;
+        flex-shrink: 0;
+      }
+
+      .product-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      .product-name {
+        font-size: 16px;
+        font-weight: 700;
+        margin-bottom: 7px;
+      }
+
+      .product-meta {
+        color: var(--muted);
+        font-size: 13px;
+        margin-bottom: 8px;
+      }
+
+      .qty-badge {
+        background: #edf4ff;
+        color: var(--blue);
+        padding: 5px 9px;
+        border-radius: 6px;
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      .product-price {
+        font-size: 18px;
+        font-weight: 700;
+        margin-left: auto;
+        white-space: nowrap;
+      }
+
+      /* ================================
+       ORDER SUMMARY
+    ================================= */
+
+      .summary-row {
+        display: flex;
+        justify-content: space-between;
+        color: #475467;
+        font-size: 14px;
+        margin-bottom: 12px;
+      }
+
+      .summary-total {
+        display: flex;
+        justify-content: space-between;
+        border-top: 1px dashed #d8dee8;
+        padding-top: 16px;
+        margin-top: 14px;
+        font-size: 18px;
+        font-weight: 700;
+      }
+
+      .total-price {
+        color: var(--blue);
+        font-size: 23px;
+      }
+
+      /* ================================
+       PAID ONLINE BOX
+    ================================= */
+
+      .paid-online {
+        margin-top: 20px;
+        background: var(--light-green);
+        border: 1px solid #ccebd6;
+        border-radius: 10px;
+        padding: 15px;
+      }
+
+      .paid-online-icon {
+        width: 38px;
+        height: 38px;
+        background: var(--green);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+      }
+
+      .paid-online-title {
+        font-weight: 700;
+        font-size: 15px;
+      }
+
+      .paid-online-text {
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .paid-online-amount {
+        color: var(--green);
+        font-size: 18px;
+        font-weight: 700;
+        margin-left: auto;
+      }
+
+      /* ================================
+       SELLER
+    ================================= */
+
+      .seller-logo {
+        width: 85px;
+        height: 85px;
+        border-radius: 50%;
+        background: #171d29;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        font-weight: 800;
+        font-style: italic;
+        font-size: 17px;
+        flex-shrink: 0;
+      }
+
+      .seller-name {
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 10px;
+      }
+
+      .seller-feature-box {
+        background: #f5f8ff;
+        border: 1px solid #dce8ff;
+        border-radius: 10px;
+        padding: 14px;
+      }
+
+      .seller-feature {
+        display: flex;
+        gap: 9px;
+        align-items: center;
+        color: var(--blue);
+        font-size: 12px;
+        margin-bottom: 9px;
+      }
+
+      .seller-feature:last-child {
+        margin-bottom: 0;
+      }
+
+      /* ================================
+       VERIFIED FOOTER
+    ================================= */
+
+      .verified-box {
+        margin: 20px 30px 25px;
+        border: 1px solid #a8c8ff;
+        background: #f7faff;
+        border-radius: 11px;
+        padding: 15px 18px;
+      }
+
+      .verified-box i {
+        color: var(--blue);
+        font-size: 25px;
+      }
+
+      .verified-title {
+        color: var(--blue);
+        font-size: 14px;
+        font-weight: 700;
+      }
+
+      .verified-text {
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .contact-btn {
+        border: 1px solid var(--blue);
+        color: var(--blue);
+        background: white;
+        border-radius: 9px;
+        padding: 9px 15px;
+        font-weight: 600;
+        font-size: 13px;
+      }
+
+      .contact-btn:hover {
+        background: #eef5ff;
+      }
+
+      /* ================================
+       THANK YOU
+    ================================= */
+
+      .thank-you {
+        text-align: center;
+        color: #475467;
+        font-size: 14px;
+        padding-bottom: 25px;
+      }
+
+      /* ================================
+       MOBILE
+    ================================= */
+
+      @media (max-width: 767px) {
+        .order-page {
+          margin: 15px auto;
+          padding: 0 10px;
+        }
+
+        .confirmation-header {
+          padding: 20px;
+        }
+
+        .confirmed-title {
+          font-size: 21px;
+        }
+
+        .confirmed-icon {
+          width: 36px;
+          height: 36px;
+          font-size: 18px;
+        }
+
+        .secure-box {
+          margin-top: 18px;
+        }
+
+        .content-section {
+          margin: 15px;
+          padding: 16px;
+        }
+
+        .product-item {
+          align-items: flex-start;
+          gap: 12px;
+        }
+
+        .product-image {
+          width: 80px;
+          height: 80px;
+        }
+
+        .product-name {
+          font-size: 14px;
+        }
+
+        .product-price {
+          font-size: 15px;
+        }
+
+        .seller-feature-box {
+          margin-top: 15px;
+        }
+
+        .verified-box {
+          margin: 15px;
+        }
+
+        .verified-box .contact-btn {
+          margin-top: 12px;
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container-fluid">
+      <div class="order-page">
+        <div class="order-card">
+          <!-- =========================================
+             CONFIRMATION HEADER
+        ========================================== -->
+
+          <div class="confirmation-header">
+            <div class="row align-items-center">
+              <div class="col-md-8">
+                <div class="d-flex align-items-center gap-3">
+                  <div class="confirmed-icon">
+                    <i class="bi bi-check-lg"></i>
+                  </div>
+
+                  <div>
+                    <div class="confirmed-title">ORDER CONFIRMED</div>
+
+                    <div class="confirmation-text">Thank you! Your order has been placed successfully.</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="secure-box justify-content-md-end">
+                  <div class="secure-icon">
+                    <i class="bi bi-check-lg"></i>
+                  </div>
+
+                  <div>
+                    <div class="secure-title">100% Secure</div>
+
+                    <div class="secure-subtitle">Verified Order</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- =========================================
+             ORDER INFORMATION
+        ========================================== -->
+
+          <div class="content-section">
+            <div class="row align-items-center">
+              <div class="col-md-7">
+                <div class="order-id-label">Order ID</div>
+
+                <div class="order-id">
+                  ORD102458
+
+                  <button class="copy-btn" onclick="copyOrderId()" title="Copy Order ID">
+                    <i class="bi bi-copy"></i>
+                  </button>
+                </div>
+
+                <div class="date-info mt-3">
+                  <i class="bi bi-calendar3"></i>
+
+                  25 May 2024, 10:30 AM
+                </div>
+              </div>
+
+              <div class="col-md-5 mt-4 mt-md-0">
+                <div class="paid-badge">PAID</div>
+
+                <div class="payment-title">Online Payment</div>
+
+                <div class="payment-success">
+                  Payment Successful
+
+                  <i class="bi bi-check-circle-fill"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- =========================================
+             CUSTOMER DETAILS + ADDRESS
+        ========================================== -->
+
+          <div class="content-section">
+            <div class="row">
+              <!-- CUSTOMER -->
+
+              <div class="col-md-6">
+                <div class="section-heading">
+                  <i class="bi bi-person-fill"></i>
+
+                  Customer Details
+                </div>
+
+                <div class="customer-name">Rahul Sharma</div>
+
+                <div class="detail-row">
+                  <i class="bi bi-telephone-fill"></i>
+
+                  <span> +91 98765 43210 </span>
+                </div>
+
+                <div class="detail-row">
+                  <i class="bi bi-envelope-fill"></i>
+
+                  <span> rahulsharma@gmail.com </span>
+                </div>
+              </div>
+
+              <!-- ADDRESS -->
+
+              <div class="col-md-6 mt-4 mt-md-0">
+                <div class="section-heading">
+                  <i class="bi bi-geo-alt-fill"></i>
+
+                  Delivery Address
+                </div>
+
+                <div class="address-text">
+                  22, Green Park Society,<br />
+
+                  Near Lotus Tower,<br />
+
+                  Andheri East,<br />
+
+                  Mumbai - 400069,<br />
+
+                  Maharashtra, India
+                </div>
+
+                <button class="map-btn mt-3" onclick="openMap()">
+                  <i class="bi bi-map me-1"></i>
+
+                  View on Map
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- =========================================
+             ORDER ITEMS
+        ========================================== -->
+
+          <div class="content-section">
+            <div class="section-heading">
+              <i class="bi bi-bag-check-fill"></i>
+
+              Order Items
+            </div>
+
+            <!-- PRODUCT 1 -->
+
+            <div class="product-item">
+              <div class="product-image">
+                <img src="https://via.placeholder.com/150x130?text=Helmet" alt="Helmet" />
+              </div>
+
+              <div class="flex-grow-1">
+                <div class="product-name">Steelbird SBH-17 Full Face Helmet</div>
+
+                <div class="product-meta">Size: L &nbsp; • &nbsp; Color: Black Red</div>
+
+                <span class="qty-badge"> Qty: 1 </span>
+              </div>
+
+              <div class="product-price">₹1,499</div>
+            </div>
+
+            <!-- PRODUCT 2 -->
+
+            <div class="product-item">
+              <div class="product-image">
+                <img src="https://via.placeholder.com/150x130?text=Gloves" alt="Riding Gloves" />
+              </div>
+
+              <div class="flex-grow-1">
+                <div class="product-name">Riding Gloves Pro Biker</div>
+
+                <div class="product-meta">Size: L &nbsp; • &nbsp; Color: Black</div>
+
+                <span class="qty-badge"> Qty: 1 </span>
+              </div>
+
+              <div class="product-price">₹699</div>
+            </div>
+          </div>
+
+          <!-- =========================================
+             ORDER SUMMARY
+        ========================================== -->
+
+          <div class="content-section">
+            <div class="section-heading">
+              <i class="bi bi-receipt"></i>
+
+              Order Summary
+            </div>
+
+            <div class="summary-row">
+              <span> Subtotal (2 Items) </span>
+
+              <strong> ₹2,198 </strong>
+            </div>
+
+            <div class="summary-row">
+              <span> Delivery Charges </span>
+
+              <strong> ₹0 </strong>
+            </div>
+
+            <div class="summary-total">
+              <span> Total Amount </span>
+
+              <span class="total-price"> ₹2,198 </span>
+            </div>
+
+            <!-- PAID ONLINE -->
+
+            <div class="paid-online">
+              <div class="d-flex align-items-center gap-3">
+                <div class="paid-online-icon">
+                  <i class="bi bi-shield-check"></i>
+                </div>
+
+                <div>
+                  <div class="paid-online-title">Paid Online</div>
+
+                  <div class="paid-online-text">Payment completed on 25 May 2024, 10:31 AM</div>
+                </div>
+
+                <div class="paid-online-amount">₹2,198</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- =========================================
+             SELLER DETAILS
+        ========================================== -->
+
+          <div class="content-section">
+            <div class="section-heading">
+              <i class="bi bi-shop"></i>
+
+              Seller / Store Details
+            </div>
+
+            <div class="row align-items-center">
+              <div class="col-md-7">
+                <div class="d-flex align-items-center gap-3">
+                  <div class="seller-logo">
+                    RIDER<br />
+                    STORE
+                  </div>
+
+                  <div>
+                    <div class="seller-name">Rider Store</div>
+
+                    <div class="detail-row mb-2">
+                      <i class="bi bi-telephone-fill"></i>
+
+                      +91 91234 56789
+                    </div>
+
+                    <div class="detail-row mb-2">
+                      <i class="bi bi-envelope-fill"></i>
+
+                      support@riderstore.com
+                    </div>
+
+                    <div class="detail-row mb-0">
+                      <i class="bi bi-geo-alt-fill"></i>
+
+                      Jaipur, Rajasthan, India
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-5">
+                <div class="seller-feature-box">
+                  <div class="seller-feature">
+                    <i class="bi bi-award-fill"></i>
+
+                    Quality Products
+                  </div>
+
+                  <div class="seller-feature">
+                    <i class="bi bi-truck"></i>
+
+                    Fast Delivery
+                  </div>
+
+                  <div class="seller-feature">
+                    <i class="bi bi-shield-check"></i>
+
+                    Trusted Store
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- =========================================
+             VERIFIED ORDER
+        ========================================== -->
+
+          <div class="verified-box">
+            <div class="row align-items-center">
+              <div class="col-md-8">
+                <div class="d-flex gap-3">
+                  <i class="bi bi-shield-fill-check"></i>
+
+                  <div>
+                    <div class="verified-title">This is a verified order.</div>
+
+                    <div class="verified-text">If you have any questions, contact the store.</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4 text-md-end">
+                <button class="contact-btn" onclick="contactStore()">
+                  <i class="bi bi-telephone-fill me-1"></i>
+
+                  Contact Store
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- =========================================
+             THANK YOU
+        ========================================== -->
+
+          <div class="thank-you">Thank you for shopping with us! 😊</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      /* ==========================
+       COPY ORDER ID
+    ========================== */
+
+      function copyOrderId() {
+        const orderId = "ORD102458";
+
+        navigator.clipboard.writeText(orderId);
+
+        alert("Order ID copied: " + orderId);
+      }
+
+      /* ==========================
+       OPEN MAP
+    ========================== */
+
+      function openMap() {
+        const address = "22 Green Park Society, Near Lotus Tower, Andheri East, Mumbai 400069";
+
+        const url = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(address);
+
+        window.open(url, "_blank");
+      }
+
+      /* ==========================
+       CONTACT STORE
+    ========================== */
+
+      function contactStore() {
+        window.location.href = "tel:+919123456789";
+      }
+    </script>
+  </body>
+</html>
