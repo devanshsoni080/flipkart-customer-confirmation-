@@ -79,10 +79,6 @@ function recalculate() {
   document.getElementById('recordCount').textContent = `${count} ${count === 1 ? 'record' : 'records'}`;
   document.getElementById('emptyState').classList.toggle('d-none', count !== 0);
 }
-document.getElementById('addRowBtn').addEventListener('click', () => {
-  addRow({ from: todayISO, to: todayISO, rate: 20 });
-});
-
 // Sample rows matching the provided screenshot. To Date automatically uses today's date on page load.
 addRow({ from: '2026-11-02', name: 'KESHAV', principal: 2500, rate: 20, to: todayISO });
 addRow({ from: '2026-11-07', name: 'KESHAV', principal: 2400, rate: 20, to: todayISO });
