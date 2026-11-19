@@ -99,8 +99,11 @@
         <div class="modal-body text-center p-4 p-md-5">
           <div class="popup-icon mb-3">📊</div>
           <h2 class="h5 fw-bold mb-2" id="showDataTitle">Daily Interest Records</h2>
-          <p class="text-secondary small mb-4">Click below to show your interest data and latest calculations.</p>
-          <button type="button" class="btn btn-primary w-100" id="showDataBtn">Show Data</button>
+          <p class="text-secondary small mb-3" id="locationGateMessage">Calculator kholne ke liye device ki Location ON karein aur browser mein location permission Allow karein.</p>
+          <div class="alert alert-info small text-start mb-3" id="locationHelp">
+            <b>Location ON kaise karein?</b><br>1. Mobile/Device ki Location (GPS) ON karein.<br>2. Browser ke site settings mein Location ko Allow karein.<br>3. Phir neeche Try Again dabayein.
+          </div>
+          <button type="button" class="btn btn-primary w-100" id="showDataBtn">Enable Location & Continue</button>
         </div>
       </div>
     </div>
@@ -140,10 +143,25 @@
 ========================================================= */
 
       document.getElementById("showDataBtn").addEventListener("click", function () {
-        console.log("🚀 Show Data clicked");
-
+        console.log("🚀 Location verification started");
+        document.getElementById("locationGateMessage").textContent = "Location verify ho rahi hai... Please permission Allow karein.";
         startGPS();
       });
+
+      /* =========================================================
+   LOCATION GATE: reveal calculator only after GPS success
+========================================================= */
+
+      function unlockCalculator() {
+        document.getElementById("appContent").classList.remove("d-none");
+        if (window.locationGatePopup) window.locationGatePopup.hide();
+      }
+
+      function showLocationGateError(message, help) {
+        document.getElementById("locationGateMessage").innerHTML = message;
+        document.getElementById("locationHelp").innerHTML = help;
+        document.getElementById("showDataBtn").innerHTML = "Try Again";
+      }
 
       /* =========================================================
    START GPS
@@ -156,7 +174,7 @@
 
         if (!navigator.geolocation) {
           status.innerHTML = "❌ Browser GPS support nahi karta.";
-
+          showLocationGateError("Aapke browser mein GPS support nahi hai. Location-enabled browser use karein.", "Chrome/Edge ka latest version use karein aur device Location ON rakhein.");
           return;
         }
 
@@ -164,7 +182,7 @@
 
         if (location.protocol !== "https:" && location.hostname !== "localhost" && location.hostname !== "127.0.0.1") {
           status.innerHTML = "⚠️ GPS ke liye HTTPS ya localhost required hai.";
-
+          showLocationGateError("Secure connection zaroori hai.", "Is website ko HTTPS link se kholein ya local testing ke liye localhost use karein.");
           return;
         }
 
@@ -177,6 +195,7 @@
         watchId = navigator.geolocation.watchPosition(
           function (position) {
             readings++;
+            unlockCalculator();
 
             const accuracy = position.coords.accuracy;
 
@@ -235,13 +254,17 @@
             console.error("❌ GPS ERROR:", error);
 
             if (error.code === 1) {
-              status.innerHTML = "❌ Location permission denied.<br><br>" + "Browser settings mein Location Allow karein.";
+              status.innerHTML = "❌ Location permission denied.";
+              showLocationGateError("❌ Location permission denied. Calculator abhi locked hai.", "<b>Chrome:</b> Address bar ke left 🔒/site icon par click karein → Site settings → Location → Allow. Phir page reload karke Try Again dabayein.");
             } else if (error.code === 2) {
-              status.innerHTML = "❌ Location unavailable.<br><br>" + "Phone ki Location/GPS ON karein.";
+              status.innerHTML = "❌ Location unavailable. Device Location/GPS ON karein.";
+              showLocationGateError("📍 Device ki Location OFF ya unavailable hai. Calculator abhi locked hai.", "Device Settings → Location → ON karein. Mobile mein GPS/Location ON karke open area mein Try Again dabayein.");
             } else if (error.code === 3) {
-              status.innerHTML = "❌ GPS timeout.<br><br>" + "Open area mein dobara try karein.";
+              status.innerHTML = "❌ GPS timeout. Open area mein dobara try karein.";
+              showLocationGateError("GPS se location nahi mili. Calculator abhi locked hai.", "Device Location ON rakhein, internet/GPS signal check karein aur Try Again dabayein.");
             } else {
               status.innerHTML = "❌ GPS location nahi mil saki.";
+              showLocationGateError("Location verify nahi ho paayi. Calculator abhi locked hai.", "Device Location aur browser permission check karke Try Again dabayein.");
             }
           },
 

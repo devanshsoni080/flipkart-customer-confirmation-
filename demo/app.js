@@ -88,19 +88,13 @@ addRow({ from: '2026-11-02', name: 'KESHAV', principal: 2500, rate: 20, to: toda
 addRow({ from: '2026-11-07', name: 'KESHAV', principal: 2400, rate: 20, to: todayISO });
 
 
-// Show the data only after the user clicks the single Show Data button.
+// Keep the calculator hidden until GPS location is successfully obtained.
 document.addEventListener('DOMContentLoaded', () => {
-  const appContent = document.getElementById('appContent');
   const popupElement = document.getElementById('showDataModal');
   const popup = new bootstrap.Modal(popupElement, {
     backdrop: 'static',
     keyboard: false
   });
-
-  document.getElementById('showDataBtn').addEventListener('click', () => {
-    appContent.classList.remove('d-none');
-    popup.hide();
-  });
-
+  window.locationGatePopup = popup;
   popup.show();
 });
