@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --navy: #173b68;
+  --blue: #2563eb;
+  --ink: #172033;
+  --muted: #68758a;
+  --line: #e6ebf2;
+  --soft: #f5f8fc;
+}
+* { box-sizing: border-box; }
+body {
+  background: #f4f7fb;
+  color: var(--ink);
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 14px;
+}
+.page-title { font-size: clamp(1.45rem, 2.5vw, 2rem); font-weight: 800; letter-spacing: -.7px; }
+.eyebrow { color: var(--blue); font-size: 10px; font-weight: 800; letter-spacing: 1.7px; margin-bottom: 6px; }
+.btn-primary { background: var(--blue); border-color: var(--blue); border-radius: 10px; font-weight: 600; padding-top: 10px; padding-bottom: 10px; }
+.btn-primary:hover { background: #1d4ed8; border-color: #1d4ed8; }
+.summary-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.summary-card {
+  background: #fff; border: 1px solid var(--line); border-radius: 14px;
+  padding: 18px 20px; box-shadow: 0 4px 16px rgba(20, 40, 75, .035);
+}
+.summary-card span { display: block; color: var(--muted); font-size: 12px; font-weight: 600; margin-bottom: 8px; }
+.summary-card strong { font-size: clamp(1.25rem, 2vw, 1.65rem); font-weight: 800; letter-spacing: -.5px; font-variant-numeric: tabular-nums; }
+.summary-card.highlight { background: #edf4ff; border-color: #d8e6ff; }
+.summary-card.highlight strong { color: #1d4ed8; }
+.table-panel { background: #fff; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; box-shadow: 0 4px 18px rgba(20, 40, 75, .04); }
+.panel-heading { padding: 19px 20px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--line); }
+.panel-heading h2 { font-weight: 750; }
+.interest-table { min-width: 1220px; }
+.interest-table thead th {
+  background: var(--navy); color: #fff; border: 0; padding: 14px 10px;
+  font-size: 10px; letter-spacing: .45px; white-space: nowrap; font-weight: 700;
+}
+.interest-table tbody td { padding: 9px 8px; border-color: var(--line); white-space: nowrap; }
+.interest-table tbody tr:hover { background: #f8fbff; }
+.interest-table tfoot td { background: #eef4fb; border-top: 1px solid #d9e3ef; padding: 13px 10px; font-weight: 800; white-space: nowrap; }
+.interest-table tfoot .grand-total { color: #1d4ed8; font-size: 15px; }
+.cell-input {
+  min-width: 110px; width: 100%; border: 1px solid transparent; border-radius: 7px;
+  background: transparent; padding: 7px 8px; color: var(--ink); font: inherit; outline: none;
+}
+.cell-input:hover { border-color: #dbe4f0; background: #fff; }
+.cell-input:focus { border-color: #8bb4ff; background: #fff; box-shadow: 0 0 0 3px rgba(37,99,235,.10); }
+.cell-input.name { min-width: 120px; }
+.cell-input.number { min-width: 115px; text-align: right; }
+.cell-input.rate { min-width: 90px; text-align: center; }
+.calculated { background: #f4f8fd; color: #263b58; font-weight: 650; text-align: right; font-variant-numeric: tabular-nums; }
+.calculated.days { text-align: center; }
+.remove-btn { border: 0; color: #a2adbd; background: transparent; border-radius: 7px; padding: 5px 8px; }
+.remove-btn:hover { color: #dc3545; background: #fff0f1; }
+.empty-state { text-align: center; color: var(--muted); padding: 30px 16px; }
+.formula-note { color: #758196; font-size: 12px; line-height: 1.6; }
+@media (max-width: 767.98px) {
+  main { padding-top: 20px !important; }
+  .summary-grid { grid-template-columns: 1fr; gap: 9px; }
+  .summary-card { padding: 14px 16px; }
+  .summary-card strong { font-size: 1.3rem; }
+  .panel-heading { padding: 15px; }
+}
+
+
+/* Startup Show Data popup */
+.show-data-modal { border: 0; border-radius: 18px; overflow: hidden; box-shadow: 0 24px 70px rgba(15, 35, 70, .22); }
+.popup-icon { width: 58px; height: 58px; display: grid; place-items: center; margin: 0 auto; border-radius: 17px; background: #edf4ff; font-size: 27px; }
+.modal-backdrop.show { opacity: .62; }
+
+
+/* GPS panel */
+.gps-panel{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px;box-shadow:0 4px 18px rgba(20,40,75,.04)}
+.gps-status{border-radius:9px;background:#f5f8fc;color:#40516a;padding:11px 13px;font-size:13px;line-height:1.5}
+.gps-value{height:100%;border:1px solid var(--line);background:#f8fafd;border-radius:9px;padding:12px;min-width:0}
+.gps-value small{display:block;color:var(--muted);margin-bottom:5px}
+.gps-value strong{display:block;font-size:13px;overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
